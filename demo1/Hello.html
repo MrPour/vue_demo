@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<body>
+<div id="app">
+    <div v-html="location"></div>
+    <a :href="aHref">百度一下</a>
+    <img v-bind:src="imgUrl">
+    <h2 v-once>{{message}}</h2>
+    <h2 v-pre>{{message}}</h2>
+    <h2>{{first+''+last}}</h2>
+    <h2>{{number}}</h2>
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const demo = new Vue({
+        el:"#app",
+        data:{
+            message:"海街日记",
+            number:0,
+            location:"<a href='https://www.baidu.com'>百度一下你就知道了</a>",
+            first:"Kobe",
+            last:"Bryant",
+            imgUrl:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1949004598,383013428&fm=26&gp=0.jpg",
+            aHref:"https://baidu.com"
+        },
+        methods:{
+            add:function(){
+                this.number++
+            },
+            sub:function () {
+                this.number--
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+</div>
+
+<template id="counter">
+    <div>
+        <button @click="decrement">-</button>
+        {{number}}
+        <button @click="increment">+</button>
+        <p>组件模板就像类，我们使用的就是这个组件类的实例，为了让实例之间使用不同的变量，data必须写成方法</p>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('counter',
+        {
+            template:'#counter',
+            data()
+            {
+                return {
+                    number:0
+                }
+            },
+            methods:
+                {
+                    increment()
+                    {
+                         this.number++
+                    },
+                    decrement()
+                    {
+                         this.number--
+                    }
+                }
+        }
+    );
+    const demo = new Vue({
+        el:"#app",
+        data:{
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        }
+    })
+
+</script>
+
+</body>
+</html>

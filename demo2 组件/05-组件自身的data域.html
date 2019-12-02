@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <cpn></cpn>
+</div>
+
+<template id="demo">
+    <div>
+        <h2>vue组件是一个{{underline}}</h2>
+        <p>每个vue组件不能访问父组件的数据，所以他也应该有属于自己的data、methods</p>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('cpn',
+        {
+            template:'#demo',
+            data()
+            {
+                return {underline:'封闭空间'}
+            }
+        })
+
+    const demo = new Vue({
+        el:"#app",
+        data:{
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        }
+    })
+
+</script>
+
+</body>
+</html>

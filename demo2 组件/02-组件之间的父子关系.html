@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    //子组件
+    const son = Vue.extend(
+        {
+            template:`
+            <div>
+                <h2>子标题</h2>
+                <p>詹姆斯</p>
+            </div>
+            `
+        }
+    )
+    //父组件
+    const father = Vue.extend(
+        {
+            template:`
+            <div>
+                <h2>父标题</h2>
+                <p>勒布朗</p>
+                <my_son></my_son>
+            </div>
+            `,
+            components:{
+                my_son : son
+            }
+        })
+
+    //root组件
+    const demo = new Vue({
+        el:"#app",
+        data:{
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        },
+        components:{
+            father : father
+        }
+    })
+
+</script>
+
+</body>
+</html>

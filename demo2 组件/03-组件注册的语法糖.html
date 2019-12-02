@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+
+    // const cpn = Vue.extend({
+    //     template:'<div>123</div>'
+    // })
+
+    Vue.component('cpn1',
+        {
+            template:
+            `<div>
+            <h2>全局组件的语法糖</h2>
+            <p>把原先extend需要传入的对象template:''抽离出来，代替原来创建的组件名，是为全局组件的语法糖</p>
+            </div> `
+        }
+    )
+    const demo = new Vue({
+        el:"#app",
+        data:{
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        },
+        components:{
+            cpn2:{
+                template: `
+                <div>
+                <h2>局部组件的语法糖</h2>
+                <p>把原先extend需要传入的对象template:''抽离出来，代替原来创建的组件名，是为局部组件的语法糖</p>
+                </div>
+              `
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>

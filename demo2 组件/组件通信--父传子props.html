@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <demo1 :cmovies="movies" :cmessage="message" :cmessage2="message2"></demo1>
+</div>
+
+<template id="demo">
+    <div>
+        <h2>{{cmovies}}</h2>
+        <p>{{cmessage}}</p>
+        <p>{{cmessage2}}</p>
+
+        <ul v-for="movie in cmovies">
+        <li>{{movie}}</li>
+        </ul>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('demo1',
+        {
+          template:'#demo',
+                //1、数组形式
+          // props:['cmovies','cmessage','cmessage2'],
+                //2、类型限制的对象形式
+          // props:{
+          //     cmovies:Array,
+          //     cmessage:String,
+          //     cmessage2:String
+          //   },
+            //3、更多选项的对象形式(Array和Object取默认值必须使用函数)
+          props:{
+            cmovies:{
+                type:Array,
+                default(){
+                    return ["烈日灼心","暴雪将至","风中有朵雨做的云"]
+                },
+                required:false
+            },
+            cmessage:{
+                type:String,
+                required:true
+            },
+            cmessage2:String
+          },
+          data(){
+              return {};
+            }
+        })
+
+    const demo = new Vue({
+        el:"#app",
+        data:{
+            movies:["比海更深","无人知晓","小偷家族"],
+            message:"父组件传递给子组件数据必须要使用props属性",
+            message2:"先在props中创建变量名，然后在vue实例控制的组件实例中为props中的变量赋值，然后props里的变量就有值了，这样就可以在template中使用了"
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        }
+    })
+
+</script>
+
+</body>
+</html>

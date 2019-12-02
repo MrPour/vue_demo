@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn1></cpn1>
+</div>
+
+<template id="div1">
+    <div>
+        <h2>你好啊</h2>
+        <p>将代码块写入template中，通过id进行注册，更加简洁</p>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('cpn1',{
+        template:'#div1'
+    })
+    const demo = new Vue({
+        el:"#app",
+        data:{
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        }
+    })
+
+</script>
+
+</body>
+</html>
