@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--父组件的模板-->
+<div id="app">
+    <cpn @child-click="getChild"></cpn>
+</div>
+    <!--子组件的模板-->
+<template id="demo">
+    <div>
+        <button v-for="category in categories" @click="btnClick(category)">{{category.name}}</button>
+        <p>{{message}}</p>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const cpn ={
+        template:"#demo",
+        data()
+        {
+            return {categories:
+                [
+                    {id: "a", name: "热门商品"},
+                    {id: "b", name: "手机数码"},
+                    {id: "c", name: "鞋靴箱包"},
+                ],
+                message:"父子通信的桥梁都是父模板。父传子使用v-bind绑定数据data，子传父使用v-on监听this.$emit事件"
+            }
+        },
+        methods:{
+            btnClick(category)
+            {
+                this.$emit("child-click",category)
+            }
+        }
+
+    }
+
+    const demo = new Vue({
+        el:"#app",
+        data:{
+        },
+        methods:{
+            getChild(category)
+            {
+                alert('子组件的【id:'+category.id+",name:"+category.name+'】被点击了')
+            }
+        },
+        filters:{
+        },
+        computed:{
+        },
+        components:{
+            cpn
+        }
+    })
+
+</script>
+
+</body>
+</html>

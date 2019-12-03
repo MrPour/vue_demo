@@ -7,11 +7,15 @@
 <body>
 
 <div id="app">
-    <my_cpn2></my_cpn2>
-    <my_cpn2></my_cpn2>
-    <my_cpn2></my_cpn2>
-
+    <my_cpn></my_cpn>
+    <my_cpn></my_cpn>
 </div>
+
+<div id="app2">
+    <my_cpn></my_cpn>
+</div>
+
+
 <script src="../js/vue.js"></script>
 <script>
     //1、创建组件
@@ -24,7 +28,7 @@
         `
     });
     //2、注册组件（全局组件，可在多个vue实例中使用）
-    // Vue.component('my_cpn',cpn);
+    Vue.component('my_cpn',cpn);
     //3、创建vue实例
     const demo = new Vue({
         el:"#app",
@@ -36,10 +40,22 @@
         },
         computed:{
         },
-        //4、注册组件（局部组件，之恩那个在当前vue实例中使用，开发中用的最多）
-        components:{
-            my_cpn2:cpn
-        }
+        // //4、注册组件（局部组件，之恩那个在当前vue实例中使用，开发中用的最多）
+        // components:{
+        //     my_cpn2:cpn
+        // }
+    })
+    //4、创建第二个Vue实例
+    const demo2 = new Vue({
+        el:"#app2",
+        data:{
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        },
     })
 
 </script>

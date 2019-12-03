@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :cinfo="info" :my-child-message="myMessage"></cpn>
+</div>
+
+<template id="demo02">
+    <div>
+        <h2>{{myChildMessage}}</h2>
+        <p>{{cinfo}}</p>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+
+    const child = {
+        template:"#demo02",
+        props:{
+            cinfo: {
+                type : Object,
+                default()
+                {
+                    return {}
+                }
+            },
+            myChildMessage: {
+                type : String,
+                default : "默认值"
+            }
+        }
+    }
+
+    const demo = new Vue({
+        el:"#app",
+        data:{
+            info:{
+                name:"LBJ",
+                age:"38",
+                professional:"player",
+                describe:"局部组件的注册直接声明一个对象单独保存注册信息，然后把这个对象绑定到vue中即可；而全局组件则是声明一个extend的对象,直接在对象里进行注册"
+            },
+            myMessage:"如果使用驼峰作为变量名，在绑定属性v-bind的时候必须使用连接符转化"
+        },
+        methods:{
+        },
+        filters:{
+        },
+        computed:{
+        },
+        components:{
+            cpn:child
+        }
+    })
+
+</script>
+
+</body>
+</html>
