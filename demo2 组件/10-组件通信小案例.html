@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <!--父组件的模板-->
+ <div id="app">
+     <cpn :cnumber1="number1" :cnumber2="number2"></cpn>
+ </div>
+     <!--子组件的模板-->
+ <template id="demo">
+     <div>
+         <h2>prop:{{cnumber1}}</h2>
+         <h2>data:{{dnumber1}}</h2>
+         <input type="number" v-model="dnumber1">
+         <h2>prop:{{cnumber2}}</h2>
+         <h2>data:{{dnumber2}}</h2>
+         <input type="number" v-model="dnumber2">
+         <p>1、vue和子组件是两个对象，之间的数据不能直接使用</p>
+         <p>2、子组件中的props和data一样都是可以在子组件中直接使用的数据，只不过data里的数据可以接受绑定，而props里的数据由于还受父组件的影响，不接受内部双向绑定</p>
+         <p>3、想要改变父组件的值，只能在子模板上绑定事件，然后传递$emit</p>
+     </div>
+ </template>
+ <script src="../js/vue.js"></script>
+ <script>
+     const demo = new Vue({
+         el:"#app",
+         data:{
+             number1:0,
+             number2:1
+         },
+         methods:{
+         },
+         filters:{
+         },
+         computed:{
+         },
+         components:{
+             cpn:{
+                 template:"#demo",
+                 props:{
+                     cnumber1:Number,
+                     cnumber2:Number
+                 },
+                 data()
+                 {
+                     return {
+                         dnumber1:this.cnumber1,
+                         dnumber2:this.cnumber2
+                     }
+                 }
+             }
+         }
+     })
+
+ </script>
+</body>
+</html>
