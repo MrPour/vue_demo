@@ -26,6 +26,7 @@
     Vue.component('demo1',
         {
           template:'#demo',
+          //使用prop属性接收父组件的数据
                 //1、数组形式
           // props:['cmovies','cmessage','cmessage2'],
                 //2、类型限制的对象形式
@@ -34,7 +35,7 @@
           //     cmessage:String,
           //     cmessage2:String
           //   },
-            //3、更多选项的对象形式(Array和Object取默认值必须使用函数)
+            //3、更多选项的对象形式(Array和Object定义默认值必须使用函数)
           props:{
             cmovies:{
                 type:Array,
