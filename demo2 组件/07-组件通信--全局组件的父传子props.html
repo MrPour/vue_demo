@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-    <demo1 :cmovies="movies" :cmessage="message" :cmessage2="message2"></demo1>
+    <demo1 :cmovies="movies" :cmessage="message" :cmessage3="message3" :cmessage2="message2"></demo1>
 </div>
 
 <template id="demo">
@@ -14,7 +14,7 @@
         <h2>{{cmovies}}</h2>
         <p>{{cmessage}}</p>
         <p>{{cmessage2}}</p>
-
+        <p>{{cmessage3}}</p>
         <ul v-for="movie in cmovies">
         <li>{{movie}}</li>
         </ul>
@@ -45,10 +45,11 @@
                 required:false
             },
             cmessage:{
-                type:String,
+                type:String
                 required:true
             },
-            cmessage2:String
+            cmessage2:String,
+            cmessage3:String
           },
           data(){
               return {};
@@ -60,6 +61,7 @@
         data:{
             movies:["比海更深","无人知晓","小偷家族"],
             message:"父组件传递给子组件数据必须要使用props属性",
+            message3:"父组件、子组件、子组件的模板，父组件-->子模板，子组件的目的是对数据进行处理，并做属性绑定",
             message2:"先在props中创建变量名，然后在vue实例控制的组件实例中为props中的变量赋值，然后props里的变量就有值了，这样就可以在template中使用了"
         },
         methods:{

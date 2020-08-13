@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <div :style="{fontSize:postFont+'em'}">
+    <cp1 v-for="post in posts" :post="post" @child-event="postFont += 0.1">
+    </cp1>
+    </div>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("cp1",{
+        props:['post'],
+        template:
+      `<div>
+      <h3>{{ post.title }}</h3>
+      <button @click="$emit('child-event')">
+        Enlarge text
+      </button>
+      </div>`
+    })
+    const demo = new Vue({
+        el:"#app",
+        data:{
+           posts:[
+               {id:"1",title:"fff"},
+               {id:"2",title:"ggg"}
+           ],
+           postFont : 1
+        }
+    })
+
+</script>
+</body>
+</html>
